@@ -1,0 +1,23 @@
+server {
+	listen 443 ssl;
+	listen [::]:443 ssl;
+    
+	ssl_certificate /etc/ssl/certs/inception.crt;
+	ssl_certificate_key /etc/ssl/private/inception.key;
+	ssl_protocols TLSv1.3;
+
+	root /var/www/html;
+
+	index index.php;
+
+	server_name aaslan.42.fr;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass wordpress:9000;
+	}
+}
