@@ -12,7 +12,7 @@ server {
     
 	ssl_certificate /etc/ssl/certs/inception.crt;
 	ssl_certificate_key /etc/ssl/private/inception.key;
-	ssl_protocols TLSv1.3;
+	ssl_protocols TLSv1.2 TLSv1.3;
 
 	root /var/www/html;
 
