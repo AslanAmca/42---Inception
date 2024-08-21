@@ -1,6 +1,14 @@
 server {
+	listen 80;
+	listen [::]:80;
+	server_name aaslan.42.fr;
+	return 301 https://$host$request_uri;
+}
+
+server {
 	listen 443 ssl;
 	listen [::]:443 ssl;
+	server_name aaslan.42.fr;
     
 	ssl_certificate /etc/ssl/certs/inception.crt;
 	ssl_certificate_key /etc/ssl/private/inception.key;
@@ -9,8 +17,6 @@ server {
 	root /var/www/html;
 
 	index index.php;
-
-	server_name aaslan.42.fr;
 
 	location / {
 		try_files $uri $uri/ =404;
